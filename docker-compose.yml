@@ -1,0 +1,18 @@
+version: '3.2'
+
+services:
+  smile_dev:
+    hostname: smile_dev
+    container_name: smile_dev
+    build: .
+    volumes:
+     - type: bind
+       source: "./lib_export/"
+       target: "/root/syneart/lib_export/"
+     - type: bind
+       source: "./example/"
+       target: "/root/syneart/example/"
+    command: >
+       sh -c "cp /root/syneart/smile/shell/src/universal/lib/smile* /root/syneart/lib_export/; /bin/bash"
+    tty: true
+    stdin_open: true
